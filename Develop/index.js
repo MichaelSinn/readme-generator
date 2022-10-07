@@ -1,48 +1,42 @@
-let inquirer = require("inquirer");
-let fs = require("fs")
+const inquirer = require("inquirer");
+const fs = require("fs")
+const md = require("./utils/generateMarkdown.js");
 
 const questions = [
     {
         type: "input",
         name: "title",
-        message: "Please input a title:",
-        default: "title"
+        message: "Please input a title:"
     },
     {
         type: "input",
         name: "description",
-        message: "Please input a description:",
-        default: "description"
+        message: "Please input a description:"
     },
     {
         type: "input",
         name: "installation",
-        message: "Please input installation instructions:",
-        default: "install"
+        message: "Please input installation instructions:"
     },
     {
         type: "input",
         name: "usage",
-        message: "Please input usage information:",
-        default: "usage"
+        message: "Please input usage information:"
     },
     {
         type: "input",
         name: "contribution",
-        message: "Please input contribution guidelines:",
-        default: "contribute"
+        message: "Please input contribution guidelines:"
     },
     {
         type: "input",
-        name: "test",
-        message: "Please input test instructions:",
-        default: "test"
+        name: "tests",
+        message: "Please input test instructions:"
     },
     {
         type: "input",
         name: "email",
-        message: "Please input a contact email:",
-        default: "email"
+        message: "Please input a contact email:"
     },
     {
         type: "list",
@@ -53,22 +47,21 @@ const questions = [
     {
         type: "input",
         name: "github",
-        message: "Please input your GitHub username:",
-        default: "github"
+        message: "Please input your GitHub username:"
     },
 ];
 
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, e=>{
+    fs.writeFile(fileName, data, e => {
         e ? console.log(`Error ${e}`) : console.log(`Successfully wrote to ${fileName}`);
     });
+
 }
 
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions).then(response => {
-        const {title, description, installation, usage, contribution, test, email, license, github} = response;
-        console.log(title, description, installation, usage, contribution, test, email, license, github);
+        writeToFile("README.md", md(response));
     });
 }
 
