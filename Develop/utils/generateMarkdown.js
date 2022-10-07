@@ -1,6 +1,7 @@
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
     if (!license) return "";
+    // Object containing the different license badges
     const licenseBadges = {
         MIT: "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
         ISC: "[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)",
@@ -12,6 +13,7 @@ function renderLicenseBadge(license) {
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
     if (!license) return "";
+    // Object containing the different license links
     const licenseLinks = {
         MIT: "https://opensource.org/licenses/MIT",
         ISC: "https://opensource.org/licenses/ISC",
@@ -23,12 +25,16 @@ function renderLicenseLink(license) {
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
     if (!license) return "";
+    // Return the license section text
     return `This project is covered under the license of ${license}. More information about this license: ${renderLicenseLink(license)}`;
 }
 
 function generateMarkdown(data) {
+    // Deconstruct data into variables
     const {title, description, installation, usage, contribution, tests, email, license, github} = data;
+    // Get license badge
     const licenseBadge = renderLicenseBadge(license);
+    // Return the README
     return `# ${title}
 ${licenseBadge}\n
 ## Description

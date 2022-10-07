@@ -1,7 +1,9 @@
+// Required packages
 const inquirer = require("inquirer");
 const fs = require("fs")
 const md = require("./utils/generateMarkdown.js");
 
+// Questions for inquirer
 const questions = [
     {
         type: "input",
@@ -51,16 +53,18 @@ const questions = [
     },
 ];
 
+// Writes the data to a file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, e => {
-        e ? console.log(`Error ${e}`) : console.log(`Successfully wrote to ${fileName}`);
+        e ? console.log(`Error ${e}`) : console.log(`Successfully wrote to ${fileName}`); // Checks for a successful write
     });
 
 }
 
 function init() {
+    // Get the questions
     inquirer.prompt(questions).then(response => {
-        writeToFile("README.md", md(response));
+        writeToFile("README.md", md(response)); // Write the README from the responses
     });
 }
 
