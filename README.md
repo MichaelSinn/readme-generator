@@ -22,6 +22,8 @@ Clone or fork this repository, and run index.js with Node JS installed
 
 In order to use this project, follow the installation instructions and then proceed to answer all of the given prompts. The README file will be automatically generated for you in the Develop folder.
 
+Live demonstration video: https://drive.google.com/file/d/1-XxjhZQNh0Ef5EOGD1gLW4rnHMO669US/view
+
 ## Contributing
 
 N/A
